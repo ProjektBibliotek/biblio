@@ -1,0 +1,508 @@
+\documentclass[a4paper]{article}
+\usepackage{polski}
+\usepackage[cp1250]{inputenc}
+\usepackage{url}
+
+\title{\bf{Aplikacja webowa biblioteki wykonana przy u¿yciu technologii PHP i MYSQL}}
+\author{{\em £ukasz Wojtas}\\{\em Patrycja Pieni¹¿ek}\\{\em Karolina Pasiut}\\{\em Mateusz Zygmunt}\\{\em Grzegorz Wygoda }}
+
+\date{}
+
+\begin{document}
+
+\begin{titlepage}
+\maketitle
+\thispagestyle{empty}
+\bigskip
+\begin{center}
+Zespo³owe przedsiêwziêcie in¿ynierskie\\[2mm]
+
+Informatyka\\[2mm]
+
+Rok. akad. 2017/2018, sem. I\\[2mm]
+
+Prowadz¹cy: dr hab. Marcin Mazur
+\end{center}
+\end{titlepage}
+
+\tableofcontents
+\thispagestyle{empty}
+
+\newpage
+
+\section{Opis projektu}
+
+\subsection{Cz³onkowie zespo³u}
+
+\begin{enumerate}
+\item £ukasz Wojtas (kierownik projektu),
+\item Patrycja Pieni¹¿ek,
+\item Karolina Pasiut,
+\item Mateusz Zygmunt,
+\item Grzegorz Wygoda
+\end{enumerate}
+
+\subsection{Cel projektu (produkt)}
+
+Celem projektu jest stworzenie aplikacji webowej biblioteki wykonanej przy u¿yciu technologii PHP i MYSQL. Ma ona na celu skomputeryzowanie, a tym samym usprawnienie obs³ugi ksiêgozbioru biblioteki. Aplikacja bêdzie pozwala³a na wyszukiwanie pozycji oraz wypo¿yczenie wybranej przez nas ksi¹¿ki.
+
+\subsection{Potencjalny odbiorca produktu (klient)}
+
+Potencjalnym odbiorc¹ s¹ biblioteki gminne które przeprowadzaj¹ informatyzacje i restrukturyzacje zbiorów bibliotecznych.
+
+\subsection{Metodyka}
+
+Projekt bêdzie realizowany przy u¿yciu (zaadaptowanej do istniej¹cych warunków) metodyki {\em Scrum}. 
+
+\section{Wymagania u¿ytkownika}
+
+\subsection{User story 1}
+Jako czytelnik chcia³bym, aby pojawi³a siê wyszukiwarka pozwalaj¹ca szybko znaleŸæ ksi¹¿kê która mnie interesuje, tak by nie musieæ przegl¹daæ ca³ej listy ksi¹¿ek.
+
+\subsection{User story 2}
+Jako czytelnik chcia³abym mieæ mo¿liwoœæ wyszukania wszystkich ksi¹¿ek danego autora po wpisaniu w wyszukiwarce jego  nazwiska, aby skróciæ proces wyszukiwania.
+
+\subsection{User story 3}
+Jako czytelnik chcia³bym mieæ mo¿liwoœæ zalogowania siê na swoje indywidualne konto, by móc korzystaæ z wszystkich us³ug platformy.
+
+\subsection{User story 4}
+Jako czytelnik chcia³bym mieæ mo¿liwoœæ wyszukiwania ksi¹¿ki po jej gatunku, aby nie trzeba by³o przegl¹daæ ksi¹¿ek które mnie nie interesuj¹.
+
+\subsection{User story 5}
+Jako czytelnik chcia³abym aby strona dzia³a³a na urz¹dzeniach mobilnych, aby móc wypo¿yczyæ ksi¹¿kê bez u¿ywania komputera/laptopa (strona skalowalna do wyœwietlacza urz¹dzenia mobilnego).
+
+\subsection{User story 6}
+Jako czytelnik chcia³abym mieæ mo¿liwoœæ sprawdzenia danych kontaktowych biblioteki, aby w razie wyst¹pienia problemu móc szybko skontaktowaæ siê z pracownikami. 
+
+\subsection{User story 7}
+Jako czytelnik chcia³bym mieæ mo¿liwoœæ wypo¿yczania(rezerwacji) ksi¹¿ki online, abym nie musia³ staæ w kolejce i traciæ czasu. 
+
+\subsection{User story 8}
+Jako czytelnik chcia³bym, aby na stronie internetowej znalaz³o siê komfortowe menu nawigacyjne, aby u³atwiæ przegl¹danie strony i z ³atwoœci¹ móc przechodziæ miêdzy zak³adkami.
+
+\subsection{User story 9}
+Jako czytelnik chcia³bym aby na stronie mo¿na by³o zobaczyæ listê ksi¹¿ek najczêœciej wypo¿yczanych przez innych czytelników, aby znaleŸæ ciekawe, nieznane wczeœniej pozycje literackie. 
+
+\subsection{User story 10}
+Jako czytelnik chcia³bym mieæ mo¿liwoœæ zaproponowania ksi¹¿ki której biblioteka nie posiada, aby jak najszybciej mieæ mo¿liwoœæ przeczytania interesuj¹cych tytu³ów bez koniecznoœci zakupu.(opcjonalnie)
+
+\subsection{User story 11}
+Jako czytelnik chcia³bym móc sprawdziæ termin oddania ksi¹¿ki aby oddaæ lub przed³u¿yæ ksi¹¿kê w terminie, aby unikn¹æ p³acenia kary.
+
+\subsection{User story 12}
+Jako czytelnik chcia³bym mieæ mo¿liwoœæ przed³u¿enia terminu wypo¿yczenia ksi¹¿ki, aby w razie potrzeby moc zatrzymaæ ksi¹¿kê na d³u¿ej bez potrzeby pójœcia do biblioteki stacjonarnej.
+
+\subsection{User story 13}
+Jako czytelnik chcia³bym mieæ mo¿liwoœæ zarezerwowania (zapisania siê w kolejce) ksi¹¿ki na stronie internetowej, aby jak najszybciej otrzymaæ mo¿liwoœæ wypo¿yczenia ksi¹¿ki ciesz¹cej siê du¿¹ popularnoœci¹ w bibliotece.
+
+\subsection{User story 14}
+Jako czytelnik chcia³bym móc przeczytaæ krótki opis ksi¹¿ki któr¹ chcia³bym wypo¿yczyæ, aby wiedzieæ o czym ona jest i czy przypadnie mi do gustu.(opcjonalnie)
+
+\subsection{User story 15}
+Jako administrator chcia³bym mieæ dostêp do bazy kont u¿ytkowników, aby móc zarz¹dzaæ kontami u¿ytkowników: dodawaæ, usuwaæ oraz edytowaæ dane.
+
+\subsection{User story 16}
+Jako administrator chce mieæ pe³ny dostêp do bazy danych ksi¹¿ek, aby móc zarz¹dzaæ list¹ dostêpnych pozycji: dodawaæ, usuwaæ, poprawiaæ dane ksi¹¿ek.
+
+\subsection{User story 17}
+Jako administrator chcia³bym mo¿liwoœæ dodawania u¿ytkowników, aby móc obs³u¿yæ nowych klientów.
+
+\subsection{User story 18}
+Jako administrator chcia³bym mieæ podgl¹d niewypo¿yczonych ksi¹¿ek, aby mieæ zawsze aktualna listê do stacjonarnej obs³ugi klienta.
+
+\subsection{User story 19}
+Jako administrator chcia³bym mieæ mo¿liwoœæ wypo¿yczania ksi¹¿ek dla czytelników, aby móc obs³u¿yæ klienta.
+
+
+\section{Harmonogram}
+
+\subsection{Rejestr zadañ (Product Backlog)}
+
+\begin{itemize}
+\item Data rozpoczêcia: 25.10.2017.
+\item  Data zakoñczenia: 07.11.2017.
+\end{itemize}
+
+\subsection{Sprint 1}
+
+\begin{itemize}
+\item Data rozpoczêcia: 07.11.2017.
+\item Data zakoñczenia: 21.11.2017.
+\item Scrum Master: £ukasz Wojtas.
+\item Product Owner: Karolina Pasiut.
+\item Development Team: Patrycja Pieni¹¿ek, Grzegorz Wygoda, Mateusz Zygmunt.
+\end{itemize}
+
+\subsection{Sprint 2}
+
+\begin{itemize}
+\item Data rozpoczêcia: 21.11.2017.
+\item  Data zakoñczenia: 19.12.2017.
+\item Scrum Master: Patrycja Pieni¹¿ek.
+\item Product Owner: Grzegorz Wygoda.
+\item Development Team: Karolina Pasiut, £ukasz Wojtas, Mateusz Zygmunt.
+\end{itemize}
+
+\subsection{Sprint 3}
+
+\begin{itemize}
+\item Data rozpoczêcia: 19.12.2017.
+\item  Data zakoñczenia: 16.01.2018.
+\item Scrum Master: Mateusz Zygmunt.
+\item Product Owner: £ukasz Wojtas.
+\item Development Team: Karolina Pasiut, Patrycja Pieni¹¿ek, Grzegorz Wygoda.
+\end{itemize}
+
+
+\section{Product Backlog}
+
+\subsection{Backlog Item 1}
+\paragraph{Tytu³ zadania.} Zaprojektowanie bazy danych.
+\paragraph{Opis zadania.} Zadanie ma na celu stworzenie projektu bazy opartej na technologii MySQL zoptymalizowanej pod k¹tem dzia³ania biblioteki z tabelami zawieraj¹cymi dane ksi¹¿ek, wypo¿yczeñ klientów i u¿ytkowników.
+\paragraph{Priorytet.} 1.
+\paragraph{Definition of Done.} Gotowy do zaimplementowania projekt bazy danych zawieraj¹cy informacje podane w opisie.
+
+\subsection{Backlog Item 2}
+\paragraph{Tytu³ zadania.} Utworzenie bazy danych.
+\paragraph{Opis zadania.} Zadanie ma na celu stworzenie bazy danych, która bêdzie przechowywa³a informacje aplikacji zarz¹dzania bibliotek¹  z przyk³adowymi danymi w ka¿dej z tabel. Baza powstanie na podstawie projektu wykonanego w poprzednim zadaniu.
+\paragraph{Priorytet.} 1.
+\paragraph{Definition of Done.} Baza danych gotowa do wprowadzania danych aplikacji i testowania dzia³ania skryptów.
+
+\subsection{Backlog Item 3}
+\paragraph{Tytu³ zadania.} Utworzenie szablonu interfejsu webowego.
+\paragraph{Opis zadania.} Zadanie ma na celu stworzenie szablonu interfejsu webowego pokazuj¹cego graficzny uk³ad strony aplikacji.
+\paragraph{Priorytet.} 2.
+\paragraph{Definition of Done.}Szablon interfejsu webowego obs³uguj¹cy aplikacjê zawieraj¹cy: logo, menu aplikacji, informacje o bibliotece, puste podstrony aplikacji.
+
+\subsection{Backlog Item 4} 
+\paragraph{Tytu³ zadania.} Utworzenie skryptów PHP: Modyfikacja, dodawanie i usuwanie ksi¹¿ek.
+\paragraph{Opis zadania.} Zadanie ma na celu utworzenie skryptów w jêzyku PHP pozwalaj¹cych na dodawanie, modyfikowanie oraz usuwanie ksi¹¿ek z listy.
+\paragraph{Priorytet.} 2
+\paragraph{Definition of Done.} Prawid³owe dzia³anie skryptów pozwalaj¹cych na modyfikowanie listy ksi¹¿ek weryfikowane wywo³aniem ich przez interfejs webowy i sprawdzeniem efektu dzia³ania w bazie MySQL.
+
+\subsection{Backlog Item 5}
+\paragraph{Tytu³ zadania.} Utworzenie skryptów PHP: Modyfikacja, dodawanie i usuwanie u¿ytkowników.
+\paragraph{Opis zadania.} Zadanie ma na celu utworzenie skryptów w jêzyku PHP pozwalaj¹cych na dodawanie, modyfikowanie oraz usuwanie u¿ytkowników z listy.
+\paragraph{Priorytet.} 2
+\paragraph{Definition of Done.} Dzia³aj¹ce skrypty PHP pozwalaj¹ce na modyfikacje listy u¿ytkowników weryfikowane wywo³aniem ich przez interfejs webowy i sprawdzeniem efektu dzia³ania w bazie MySQL.
+
+\subsection{Backlog Item 6}
+\paragraph{Tytu³ zadania.} Utworzenie podstron: dodaj¹cej, modyfikuj¹cej jak i usuwaj¹cej wpisy ksi¹¿kowe w bazie danych.
+\paragraph{Opis zadania.} Zadanie ma na celu stworzenie podstron, które umo¿liwi¹ modyfikacje wpisów w bazie danych ksi¹¿ek.
+\paragraph{Priorytet.} 3
+\paragraph{Definition of Done.} Dzia³aj¹ce podstrony aplikacji umo¿liwiaj¹ce dodawanie, modyfikowanie i usuwanie ksi¹¿ek.
+
+\subsection{Backlog Item 7}
+\paragraph{Tytu³ zadania.} Utworzenie podstrony modyfikuj¹cej, dodaj¹cej oraz usuwaj¹cej u¿ytkowników zawartych w bazie danych.
+\paragraph{Opis zadania.} Zadanie ma na celu stworzenie podstrony, pozwalaj¹cej na modyfikowanie bazy u¿ytkowników.
+\paragraph{Priorytet.} 3
+\paragraph{Definition of Done.}Dzia³aj¹ce podstrony aplikacji umo¿liwiaj¹ce dodawanie, modyfikowanie i usuwanie u¿ytkowników.
+
+\subsection{Backlog Item 8}
+\paragraph{Tytu³ zadania.} Utworzenie skryptów PHP: Sprawdzanie wypo¿yczonych ksi¹¿ek przez klienta, prolongata wypo¿yczonych pozycji.
+\paragraph{Opis zadania.} Zadanie ma na celu utworzenie skryptów w jêzyku PHP pozwalaj¹cych podgl¹d danych wypo¿yczonych ksi¹¿ek oraz prolongatê wybranych przez klienta pozycji.
+\paragraph{Priorytet.} 3
+\paragraph{Definition of Done.} Dzia³aj¹ce skrypty PHP wyœwietlaj¹ce wypo¿yczone ksi¹¿ki oraz obs³uguj¹ce funkcjê prolongaty przez klienta.
+
+\subsection{Backlog Item 9}
+\paragraph{Tytu³ zadania.} Utworzenie skryptów ob³uguj¹cych logowanie do systemu.
+\paragraph{Opis zadania.} Zadanie ma na celu utworzenie skryptów pozwalaj¹cych zalogowaæ siê zarówno klientowi jak i pracownikowi biblioteki do systemu obs³uguj¹cego bibliotekê.
+\paragraph{Priorytet.} 3
+\paragraph{Definition of Done.} Dzia³aj¹ce skrypty umo¿liwiaj¹ce logowanie do systemu.
+
+\subsection{Backlog Item 10}
+\paragraph{Tytu³ zadania.} Utworzenie podstrony wyœwietlaj¹cej katalog ksi¹¿ek.
+\paragraph{Opis zadania.} Zadanie ma na celu stworzenie podstrony umo¿liwiaj¹cej podgl¹d listy ksi¹¿ek.
+\paragraph{Priorytet.} 5
+\paragraph{Definition of Done.} Dzia³aj¹ca strona wyœwietlaj¹ca listê ksi¹¿ek dla pracowników i czytelników.
+
+\subsection{Backlog Item 11}
+\paragraph{Tytu³ zadania.} Wykonanie logo biblioteki.
+\paragraph{Opis zadania.} Zadanie ma na celu stworzenie projektu graficznego logo dla biblioteki w programie Adobe Illustrator.
+\paragraph{Priorytet.} 4
+\paragraph{Definition of Done.} Logo biblioteki zawieraj¹ce motyw ksi¹¿ki wpleciony w nazwê aplikacji.
+
+
+\section{Sprint 1}
+\subsection{Cel} Stworzenie pierwszej wersji produktu która umo¿liwia dodawanie, usuwanie, modyfikowanie wpisów ksi¹¿ek.
+\subsection{Sprint Planning/Backlog}
+
+\paragraph{Tytu³ zadania.} Projekt bazy .
+\begin{itemize}
+\item Estymata: L.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Baza.
+\begin{itemize}
+\item Estymata: L.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Szablon strony.
+\begin{itemize}
+\item Estymata: XL.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Tworzenie podstron do ksi¹¿ek .
+\begin{itemize}
+\item Estymata: L.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Utworzenie skryptów do ksi¹¿ek.
+\begin{itemize}
+\item Estymata: L.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Tworzenie logo aplikacji.
+\begin{itemize}
+\item Estymata: M.
+\end{itemize}
+
+\subsection{Realizacja}
+
+\paragraph{Tytu³ zadania.} Projekt bazy.
+\subparagraph{Wykonawca.} Mateusz Zygmunt.
+\subparagraph{Realizacja.} Utworzenie wstêpnego projektu bazy za pomoc¹ programu MS Access, zawieraj¹cego tabele oraz relacje. Schemat bazy danych na podstawie raportu relacji wyeksportowanego do pliku formatu pdf. Czas realizacji schematu by³ zgodny z estymat¹, brak trudnoœci podczas wykonywania zadania.
+
+\paragraph{Tytu³ zadania.} Utworzenie bazy danych.
+\subparagraph{Wykonawca.} £ukasz Wojtas.
+\subparagraph{Realizacja.} Baza zosta³a utworzona zgodnie z graficznym projektem bazy. Zawiera tabele przechowuj¹ce dane kont pracowników, czytelników biblioteki oraz ksi¹¿ek które biblioteka posiada. W bazie istniej¹ równie¿ tabele pozwalaj¹ce na zarz¹dzanie wypo¿yczeniami ksi¹¿ek. Baza i jej funkcje bêdzie rozbudowywana razem z kolejnymi wersjami aplikacji. Czas wykonania bazy oraz skryptu który j¹ tworzy by³ zgodny z estymat¹. Ma³a trudnoœæ z przypisaniem powi¹zañ miêdzy poszczególnymi tabelami zosta³a rozwi¹zana szybko, przy pomocy materia³ów dotycz¹cych jêzyka SQL dostêpnych w internecie.
+ \begin{verbatim}
+create database biblio character set utf8 collate utf8_unicode_ci;
+use biblio;
+
+CREATE TABLE czytelnicy (
+id_czytelnika INT NOT NULL auto_increment,
+imie VARCHAR(30),
+login VARCHAR(30)NOT NULL,
+haslo VARCHAR(60)NOT NULL,
+PRIMARY KEY(id_czytelnika)
+) ENGINE = InnoDB; 
+
+CREATE TABLE pracownicy (
+id_pracownika INT NOT NULL auto_increment,
+imie VARCHAR(30),
+login VARCHAR(30) NOT NULL,
+haslo VARCHAR(60) NOT NULL,
+stanowisko VARCHAR(30),
+PRIMARY KEY(id_pracownika)
+) ENGINE = InnoDB; 
+
+CREATE TABLE gatunek (
+id_gatunku INT NOT NULL auto_increment,
+nazwa VARCHAR(30),
+PRIMARY KEY(id_gatunku)
+) ENGINE = InnoDB; 
+
+CREATE TABLE ksiazki (
+id_ksiazki INT NOT NULL auto_increment,
+tytul VARCHAR(50) NOT NULL,
+imie VARCHAR(30),
+nazwisko VARCHAR(30),
+wydawnictwo VARCHAR(50),
+rok INT(10),
+gatunek INT(10)
+PRIMARY KEY(id_ksiazki),
+FOREIGN KEY(gatunek) REFERENCES gatunek(id_gatunku)
+) ENGINE = InnoDB; 
+
+
+CREATE TABLE wypozyczenia (
+id_wypozyczenia INT NOT NULL auto_increment,
+id_czytelnika VARCHAR(30) NOT NULL,
+id_ksiazki VARCHAR(30) NOT NULL,
+data_wypozyczenia DATE NOT NULL,
+data_zwrotu DATE NOT NULL,
+stan_wypozyczenia enum('0','1') NOT NULL DEFAULT '0',
+PRIMARY KEY(id_wypozyczenia),
+CONSTRAINT c_fkw1 FOREIGN KEY(id_czytelnika) REFERENCES czytelnicy (id_czytelnika)
+ON UPDATE CASCADE ON DELETE CASCADE,
+CONSTRAINT c_fkw2 FOREIGN KEY(id_ksiazki) REFERENCES ksiazki (id_ksiazki)
+ON UPDATE CASCADE ON DELETE CASCADE,
+) ENGINE = InnoDB; 
+
+
+
+
+CREATE OR REPLACE VIEW ksiazka_gatunek(id_ksiazki, tytul, imie, nazwisko, wydawnictwo, rok, gatunek)
+ AS SELECT id_ksiazki, tytul, imie, nazwisko, wydawnictwo, rok, gatunek.nazwa FROM ksiazki, gatunek WHERE ksiazki.gatunek=gatunek.id_gatunku;
+CREATE OR REPLACE VIEW wypozyczone (id_wypozyczenia, tytul, login, data_wypozyczenia, data_zwrotu, stan_wypozyczenia) 
+AS SELECT id_wypozyczenia, ksiazki.tytul, czytelnicy.login, data_wypozyczenia, data_zwrotu, stan_wypozyczenia 
+FROM wypozyczenia, czytelnicy, ksiazki where ksiazki.id_ksiazki=wypozyczenia.id_ksiazki 
+and czytelnicy.id_czytelnika=wypozyczenia.id_czytelnika;
+
+\end{verbatim}>>.
+
+
+\paragraph{Tytu³ zadania.} Szablon strony.
+\subparagraph{Wykonawca.} Karolina Pasiut.
+\subparagraph{Realizacja.} Szablon strony wykonany przy u¿yciu jêzyków HTML oraz CSS. Czas realizacji strony jest zgodny z estymat¹. 
+
+\paragraph{Tytu³ zadania.} Wykonanie podstron do zarz¹dzania ksi¹¿kami.
+\subparagraph{Wykonawca.} Grzegorz Wygoda.
+\subparagraph{Realizacja.}Podstrony zosta³y wykonane w jêzyku HTML oraz CSS. Trudnoœci sprawi³o ustawienie podstron w prawid³owej pozycji wzglêdem siebie, zosta³y one rozwi¹zane poprzez u¿ycie komendy div. Zadanie zosta³o wykonane w czasie wyznaczonym estymat¹, oraz zawiera ustalone podstrony. 
+ \begin{verbatim}
+<HTML><html>
+<head>
+<meta charset="utf-8">
+<title>PANEL ADMINISTRATORA</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+<div id="footer"></div> 
+<div class="container">
+ <header>
+PANEL ADMINISTRATORA
+</header>
+</body>
+</html>
+
+<HTML><html>
+<head>
+<meta charset="utf-8">
+<title>GODZINY OTWARCIA</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+<div id="footer"></div> 
+<div class="container">
+  <header>
+</body>
+</html>
+
+<HTML><html>
+<head>
+<meta charset="utf-8">
+<title>JAK DOJECHAÆ</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+<div id="footer"></div> 
+<div class="container">
+<header>
+</body>
+</html>
+
+Stworzony plik css (fragment).
+
+div.container {
+    width: 100%;
+
+    }
+
+header{
+    padding: 1em;
+    color: white;
+    background-color: #FF6347;		
+    clear: left;
+    text-align: center;
+}
+
+footer {
+   position: absolute;
+   color: white;
+   bottom: 0;
+   padding: 1em;
+   text-align: center;
+   width: 97%;
+   height: 20px;   
+   background:#FF6347;
+}
+\end{verbatim}>>.
+
+\paragraph{Tytu³ zadania.} Wykonanie skryptów do zarz¹dzania ksi¹¿kami.
+\subparagraph{Wykonawca.} £ukasz Wojtas.
+\subparagraph{Realizacja.} Stworzenie skryptów w jêzyku PHP. Przypisanie kodu do utworzonej bazy danych, oraz powi¹zanie z podstronami (HTML). Zadanie wykonane zgodnie z ustalon¹ estymat¹. Trudnoœci z zapisem kodu PHP, sporadyczne b³êdy sk³adni, problem z po³¹czeniem skryptu php z baz¹ danych, problemy zosta³y rozwi¹zane 
+Kod programu 
+\begin{verbatim}
+<?php
+ob_start();
+session_start();
+if ($_SESSION['kto'] !== 'pracownik'){
+	header('location: index.php');
+}
+?>
+<HTML><html>
+<head>
+<meta charset="utf-8">
+<title>Aplikacja COMFORT</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+<div align="right" style="font-size: 16px">Jesteœ zalogowany jako:<b><?php echo $_SESSION['imie']; ?></b></div>
+<div align="right"><a href="wyloguj.php" margin="right 0px">Wyloguj</a></div>
+<div id="footer"></div> 
+<div class="container">
+  
+
+<header>
+Zarz¹dzanie czytelnikiem
+</body>
+</html>
+\end{verbatim}>>.
+
+\paragraph{Tytu³ zadania.} Projekt logo aplikacji.
+\subparagraph{Wykonawca.} Patrycja Pieni¹¿ek.
+\subparagraph{Realizacja.}Stworzenie logo strony biblioteki za pomoc¹ programu  Adobe illustrator.
+
+\subsection{Sprint Review/Demo}
+Wyznaczony cel sprintu zosta³ osi¹gniêty oraz wszystkie zaplanowane Backlog Item'y zosta³y zrealizowane.
+
+\section{Sprint 2}
+
+\subsection{Cel} <<Okreœliæ, w jakim celu tworzony jest przyrost produktu>>.
+
+\subsection{Sprint Planning/Backlog}
+
+\paragraph{Tytu³ zadania.} <<Tytu³>>.
+\begin{itemize}
+\item Estymata: <<szacowana czasoch³onnoœæ (w ,,koszulkach'')>>.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} <<Tytu³>>.
+\begin{itemize}
+\item Estymata: <<szacowana czasoch³onnoœæ (w ,,koszulkach'')>>.
+\end{itemize}
+
+\paragraph{<<Tutaj dodawaæ kolejne zadania>>}
+
+\subsection{Realizacja}
+
+\paragraph{Tytu³ zadania.} <<Tytu³>>.
+\subparagraph{Wykonawca.} <<Wykonawca>>.
+\subparagraph{Realizacja.} <<Sprawozdanie z realizacji zadania (w tym ocena zgodnoœci z estymat¹). Kod programu (œrodowisko \texttt{verbatim}): \begin{verbatim}
+for (i=1; i<10; i++)
+...
+\end{verbatim}>>.
+
+\paragraph{Tytu³ zadania.} <<Tytu³>>.
+\subparagraph{Wykonawca.} <<Wykonawca>>.
+\subparagraph{Realizacja.} <<Sprawozdanie z realizacji zadania (w tym ocena zgodnoœci z estymat¹). Kod programu (œrodowisko \texttt{verbatim}): \begin{verbatim}
+for (i=1; i<10; i++)
+...
+\end{verbatim}>>.
+
+\paragraph{<<Tutaj dodawaæ kolejne zadania>>}
+
+
+\subsection{Sprint Review/Demo}
+<<Sprawozdanie z przegl¹du Sprint'u -- czy za³o¿ony cel (przyrost) zosta³ osi¹gniêty oraz czy wszystkie zaplanowane Backlog Item'y zosta³y zrealizowane? Demostracja przyrostu produktu>>.
+
+\section*{<<Tutaj dodawaæ kolejne Sprint'y>>}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Cov} S. R. Covey, {\em 7 nawyków skutecznego dzia³ania}, Rebis, Poznañ, 2007.
+
+\bibitem{Oet} Tobias Oetiker i wsp., Nie za krótkie wprowadzenie do systemu \LaTeX  \ $2_\varepsilon$, \url{ftp://ftp.gust.org.pl/TeX/info/lshort/polish/lshort2e.pdf}
+
+\bibitem{SchSut} K. Schwaber, J. Sutherland, {\em Scrum Guide}, \url{http://www.scrumguides.org/}, 2016.
+
+\bibitem{apr} \url{https://agilepainrelief.com/notesfromatooluser/tag/scrum-by-example}
+
+\bibitem{us} \url{https://www.tutorialspoint.com/scrum/scrum_user_stories.htm}
+
+\end{thebibliography}
+
+\end{document}
+
