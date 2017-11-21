@@ -1,4 +1,4 @@
-﻿create database biblio character set utf8 collate utf8_unicode_ci;
+create database biblio character set utf8 collate utf8_unicode_ci;
 use biblio;
 
 CREATE TABLE czytelnicy (
@@ -28,7 +28,7 @@ wydawnictwo VARCHAR(50),
 rok INT(10),
 gatunek INT(10)
 PRIMARY KEY(id_ksiazki),
-FOREIGN KEY(gatunek) REFERENCES gatunek(id_gatunku),
+FOREIGN KEY(gatunek) REFERENCES gatunek(id_gatunku)
 ) ENGINE = InnoDB; 
 
 
