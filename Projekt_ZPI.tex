@@ -227,76 +227,261 @@ Jako administrator chcia³bym mieæ mo¿liwoœæ wypo¿yczania ksi¹¿ek dla czytelników
 \subsection{Cel} Stworzenie pierwszej wersji produktu która umo¿liwia dodawanie, usuwanie, modyfikowanie wpisów ksi¹¿ek.
 \subsection{Sprint Planning/Backlog}
 
-\paragraph{Tytu³ zadania.} Projekt bazy .
+\paragraph{Tytu³ zadania.}Zaprojektowanie bazy danych.
 \begin{itemize}
 \item Estymata: L.
 \end{itemize}
 
-\paragraph{Tytu³ zadania.} Baza.
+\paragraph{Tytu³ zadania.}Utworzenie bazy danych.
 \begin{itemize}
 \item Estymata: L.
 \end{itemize}
 
-\paragraph{Tytu³ zadania.} Szablon strony.
+\paragraph{Tytu³ zadania.}Utworzenie szablonu interfejsu webowego.
 \begin{itemize}
 \item Estymata: XL.
 \end{itemize}
 
-\paragraph{Tytu³ zadania.} Tworzenie podstron do ksi¹¿ek .
+\paragraph{Tytu³ zadania.}Utworzenie podstron: dodaj¹cej, modyfikuj¹cej jak i usuwaj¹cej wpisy ksi¹¿kowe w bazie danych.
 \begin{itemize}
 \item Estymata: L.
 \end{itemize}
 
-\paragraph{Tytu³ zadania.} Utworzenie skryptów do ksi¹¿ek.
+\paragraph{Tytu³ zadania.} Utworzenie skryptów PHP: Modyfikacja, dodawanie i usuwanie ksi¹¿ek.
 \begin{itemize}
 \item Estymata: L.
 \end{itemize}
 
-\paragraph{Tytu³ zadania.} Tworzenie logo aplikacji.
+\paragraph{Tytu³ zadania.} Wykonanie logo biblioteki.
 \begin{itemize}
 \item Estymata: M.
 \end{itemize}
 
 \subsection{Realizacja}
 
-\paragraph{Tytu³ zadania.} <<Tytu³>>.
-\subparagraph{Wykonawca.} <<Wykonawca>>.
-\subparagraph{Realizacja.} <<Sprawozdanie z realizacji zadania (w tym ocena zgodnoœci z estymat¹). Kod programu (œrodowisko \texttt{verbatim}): \begin{verbatim}
-for (i=1; i<10; i++)
-...
+\paragraph{Tytu³ zadania.} Zaprojektowanie bazy danych.
+\subparagraph{Wykonawca.} Mateusz Zygmunt.
+\subparagraph{Realizacja.} Utworzenie wstêpnego projektu bazy za pomoc¹ programu MS Access, zawieraj¹cego tabele oraz relacje. Schemat bazy danych na podstawie raportu relacji wyeksportowanego do pliku formatu pdf. Czas realizacji schematu by³ zgodny z estymat¹, brak trudnoœci podczas wykonywania zadania.
+
+\paragraph{Tytu³ zadania.} Utworzenie bazy danych.
+\subparagraph{Wykonawca.} £ukasz Wojtas.
+\subparagraph{Realizacja.} Baza zosta³a utworzona zgodnie z graficznym projektem bazy. Zawiera tabele przechowuj¹ce dane kont pracowników, czytelników biblioteki oraz ksi¹¿ek które biblioteka posiada. W bazie istniej¹ równie¿ tabele pozwalaj¹ce na zarz¹dzanie wypo¿yczeniami ksi¹¿ek. Baza i jej funkcje bêdzie rozbudowywana razem z kolejnymi wersjami aplikacji. Czas wykonania bazy oraz skryptu który j¹ tworzy by³ zgodny z estymat¹. Ma³a trudnoœæ z przypisaniem powi¹zañ miêdzy poszczególnymi tabelami zosta³a rozwi¹zana szybko, przy pomocy materia³ów dotycz¹cych jêzyka SQL dostêpnych w internecie.
+ \begin{verbatim}
+create database biblio character set utf8 collate utf8_unicode_ci;
+use biblio;
+
+CREATE TABLE czytelnicy (
+id_czytelnika INT NOT NULL auto_increment,
+imie VARCHAR(30),
+login VARCHAR(30)NOT NULL,
+haslo VARCHAR(60)NOT NULL,
+PRIMARY KEY(id_czytelnika)
+) ENGINE = InnoDB; 
+
+CREATE TABLE pracownicy (
+id_pracownika INT NOT NULL auto_increment,
+imie VARCHAR(30),
+login VARCHAR(30) NOT NULL,
+haslo VARCHAR(60) NOT NULL,
+stanowisko VARCHAR(30),
+PRIMARY KEY(id_pracownika)
+) ENGINE = InnoDB; 
+
+CREATE TABLE gatunek (
+id_gatunku INT NOT NULL auto_increment,
+nazwa VARCHAR(30),
+PRIMARY KEY(id_gatunku)
+) ENGINE = InnoDB; 
+
+CREATE TABLE ksiazki (
+id_ksiazki INT NOT NULL auto_increment,
+tytul VARCHAR(50) NOT NULL,
+imie VARCHAR(30),
+nazwisko VARCHAR(30),
+wydawnictwo VARCHAR(50),
+rok INT(10),
+gatunek INT(10)
+PRIMARY KEY(id_ksiazki),
+FOREIGN KEY(gatunek) REFERENCES gatunek(id_gatunku)
+) ENGINE = InnoDB; 
+
+
+CREATE TABLE wypozyczenia (
+id_wypozyczenia INT NOT NULL auto_increment,
+id_czytelnika VARCHAR(30) NOT NULL,
+id_ksiazki VARCHAR(30) NOT NULL,
+data_wypozyczenia DATE NOT NULL,
+data_zwrotu DATE NOT NULL,
+stan_wypozyczenia enum('0','1') NOT NULL DEFAULT '0',
+PRIMARY KEY(id_wypozyczenia),
+CONSTRAINT c_fkw1 FOREIGN KEY(id_czytelnika) REFERENCES czytelnicy (id_czytelnika)
+ON UPDATE CASCADE ON DELETE CASCADE,
+CONSTRAINT c_fkw2 FOREIGN KEY(id_ksiazki) REFERENCES ksiazki (id_ksiazki)
+ON UPDATE CASCADE ON DELETE CASCADE,
+) ENGINE = InnoDB; 
+
+
+
+
+CREATE OR REPLACE VIEW ksiazka_gatunek(id_ksiazki, tytul, imie, nazwisko, wydawnictwo, rok, gatunek)
+ AS SELECT id_ksiazki, tytul, imie, nazwisko, wydawnictwo, rok, gatunek.nazwa FROM ksiazki, gatunek WHERE ksiazki.gatunek=gatunek.id_gatunku;
+CREATE OR REPLACE VIEW wypozyczone (id_wypozyczenia, tytul, login, data_wypozyczenia, data_zwrotu, stan_wypozyczenia) 
+AS SELECT id_wypozyczenia, ksiazki.tytul, czytelnicy.login, data_wypozyczenia, data_zwrotu, stan_wypozyczenia 
+FROM wypozyczenia, czytelnicy, ksiazki where ksiazki.id_ksiazki=wypozyczenia.id_ksiazki 
+and czytelnicy.id_czytelnika=wypozyczenia.id_czytelnika;
+
 \end{verbatim}>>.
 
-\paragraph{Tytu³ zadania.} <<Tytu³>>.
-\subparagraph{Wykonawca.} <<Wykonawca>>.
-\subparagraph{Realizacja.} <<Sprawozdanie z realizacji zadania (w tym ocena zgodnoœci z estymat¹). Kod programu (œrodowisko \texttt{verbatim}): \begin{verbatim}
-for (i=1; i<10; i++)
-...
+
+\paragraph{Tytu³ zadania.}Utworzenie szablonu interfejsu webowego.
+\subparagraph{Wykonawca.} Karolina Pasiut.
+\subparagraph{Realizacja.} Szablon strony wykonany przy u¿yciu jêzyków HTML oraz CSS. Czas realizacji strony jest zgodny z estymat¹. 
+
+\paragraph{Tytu³ zadania.} Utworzenie podstron: dodaj¹cej, modyfikuj¹cej jak i usuwaj¹cej wpisy ksi¹¿kowe w bazie danych.
+\subparagraph{Wykonawca.} Grzegorz Wygoda.
+\subparagraph{Realizacja.}Podstrony zosta³y wykonane w jêzyku HTML oraz CSS. Trudnoœci sprawi³o ustawienie podstron w prawid³owej pozycji wzglêdem siebie, zosta³y one rozwi¹zane poprzez u¿ycie komendy div. Zadanie zosta³o wykonane w czasie wyznaczonym estymat¹, oraz zawiera ustalone podstrony. 
+ \begin{verbatim}
+<HTML><html>
+<head>
+<meta charset="utf-8">
+<title>PANEL ADMINISTRATORA</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+<div id="footer"></div> 
+<div class="container">
+ <header>
+PANEL ADMINISTRATORA
+</header>
+</body>
+</html>
+
+<HTML><html>
+<head>
+<meta charset="utf-8">
+<title>GODZINY OTWARCIA</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+<div id="footer"></div> 
+<div class="container">
+  <header>
+</body>
+</html>
+
+<HTML><html>
+<head>
+<meta charset="utf-8">
+<title>JAK DOJECHAÆ</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+<div id="footer"></div> 
+<div class="container">
+<header>
+</body>
+</html>
+
+Stworzony plik css (fragment).
+
+div.container {
+    width: 100%;
+
+    }
+
+header{
+    padding: 1em;
+    color: white;
+    background-color: #FF6347;		
+    clear: left;
+    text-align: center;
+}
+
+footer {
+   position: absolute;
+   color: white;
+   bottom: 0;
+   padding: 1em;
+   text-align: center;
+   width: 97%;
+   height: 20px;   
+   background:#FF6347;
+}
 \end{verbatim}>>.
 
-\paragraph{<<Tutaj dodawaæ kolejne zadania>>}
+\paragraph{Tytu³ zadania.}  Utworzenie skryptów PHP: Modyfikacja, dodawanie i usuwanie ksi¹¿ek.
+\subparagraph{Wykonawca.} £ukasz Wojtas.
+\subparagraph{Realizacja.} Stworzenie skryptów w jêzyku PHP. Przypisanie kodu do utworzonej bazy danych, oraz powi¹zanie z podstronami (HTML). Zadanie wykonane zgodnie z ustalon¹ estymat¹. Trudnoœci z zapisem kodu PHP, sporadyczne b³êdy sk³adni, problem z po³¹czeniem skryptu php z baz¹ danych, problemy zosta³y rozwi¹zane.
+Kod programu 
+\begin{verbatim}
+<?php
+ob_start();
+session_start();
+if ($_SESSION['kto'] !== 'pracownik'){
+	header('location: index.php');
+}
+?>
+<HTML><html>
+<head>
+<meta charset="utf-8">
+<title>Aplikacja COMFORT</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+<div align="right" style="font-size: 16px">Jesteœ zalogowany jako:<b><?php echo $_SESSION['imie']; ?></b></div>
+<div align="right"><a href="wyloguj.php" margin="right 0px">Wyloguj</a></div>
+<div id="footer"></div> 
+<div class="container">
+  
 
+<header>
+Zarz¹dzanie czytelnikiem
+</body>
+</html>
+\end{verbatim}>>.
+
+\paragraph{Tytu³ zadania.} Wykonanie logo biblioteki.
+\subparagraph{Wykonawca.} Patrycja Pieni¹¿ek.
+\subparagraph{Realizacja.}Stworzenie logo strony biblioteki za pomoc¹ programu  Adobe Illustrator. Zadanie zosta³o wykonane zgodnie z estymat¹, nie sprawi³o wiêkszych trudnoœci.
 
 \subsection{Sprint Review/Demo}
-<<Sprawozdanie z przegl¹du Sprint'u -- czy za³o¿ony cel (przyrost) zosta³ osi¹gniêty oraz czy wszystkie zaplanowane Backlog Item'y zosta³y zrealizowane? Demostracja przyrostu produktu>>.
+Wyznaczony cel sprintu nie zosta³ w pe³ni osi¹gniêty oraz nie wszystkie zaplanowane zadania zosta³y zrealizowane. Zadaniem które nie zosta³o w pe³ni wykonane by³o utworzenie skryptów do modyfikacji i usuwania wpisów ksi¹¿kowych. W kolejnych sprintach nale¿y uwzglêdniæ dodanie funkcji obs³ugi b³êdów oraz usprawnienie korekty danych poprzez aplikacjê. Demonstracja produktu zosta³a zak³ócona przez defekt oprogramowania na urz¹dzeniu do niej przeznaczonym. Problem zosta³ rozwi¹zany poprzez szybk¹ interwencjê zespo³u deweloperskiego i przeniesienie aplikacji ze wszystkimi niezbêdnymi jej czêœciami na inne urz¹dzenie. Po uporaniu siê z problemem prezentacja produktu przebieg³a sprawnie.
 
 \section{Sprint 2}
 
-\subsection{Cel} <<Okreœliæ, w jakim celu tworzony jest przyrost produktu>>.
+\subsection{Cel} Stworzenie drugiej wersji produktu. Poszerzenie funkcjonalnoœci aplikacji o mo¿liwoœæ dodawania, usuwania oraz modyfikacji danych u¿ytkowników biblioteki.
 
 \subsection{Sprint Planning/Backlog}
 
-\paragraph{Tytu³ zadania.} <<Tytu³>>.
+\paragraph{Tytu³ zadania.} Tworzenie podstron do dodawania, usuwania i modyfikacji danych u¿ytkowników.
 \begin{itemize}
-\item Estymata: <<szacowana czasoch³onnoœæ (w ,,koszulkach'')>>.
+\item Estymata: L.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Tworzenie skryptów do dodawania, usuwania i modyfikacji danych u¿ytkowników.
+\begin{itemize}
+\item Estymata: L.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Poprawienie funkcjonalnoœci opcji modyfikacji danych ksi¹¿ki.
+\begin{itemize}
+\item Estymata: L.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Dodanie funkcjonalnoœci obs³ugi b³êdów przy wprowadzaniu informacji do bazy danych.
+\begin{itemize}
+\item Estymata: L.
+\end{itemize}
+
+\paragraph{Tytu³ zadania.} Rozbudowa bazy danych na potrzeby obs³ugi kolejnych funkcji aplikacji.
+\begin{itemize}
+\item Estymata: L.
 \end{itemize}
 
 \paragraph{Tytu³ zadania.} <<Tytu³>>.
 \begin{itemize}
 \item Estymata: <<szacowana czasoch³onnoœæ (w ,,koszulkach'')>>.
 \end{itemize}
-
-\paragraph{<<Tutaj dodawaæ kolejne zadania>>}
-
 \subsection{Realizacja}
 
 \paragraph{Tytu³ zadania.} <<Tytu³>>.
