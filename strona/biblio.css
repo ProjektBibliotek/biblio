@@ -1,0 +1,122 @@
+div.container {
+    width: 100%;
+
+    }
+
+header{
+    padding: 1em;
+    color: white;
+    background-color: #FF6347;		
+    clear: left;
+    text-align: center;
+}
+
+footer {
+   position: absolute;
+   color: white;
+   bottom: 0;
+   padding: 1em;
+   text-align: center;
+   width: 97%;
+   height: 20px;   
+   background:#FF6347;
+}
+
+h2
+{
+	text-align: center;
+}
+footer a {
+	color: white;
+}
+
+
+body {
+	background:#FF6347;
+	
+}
+
+.pudelko
+{
+	width: 300px;
+}
+
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 12px 10px;
+    text-decoration: none;
+	margin-bottom: 0;
+}
+
+li a:hover:not(.active) {
+    background-color: #DC143C;
+}
+
+.active {
+    background-color: #002db3;
+	width: 300px;
+}
+
+.admin {
+	
+	margin-top: 0;
+}
+
+.logout {
+	float: right;
+	margin-top: 0;
+}
+
+input[type="submit"] {
+	font-size: 12px;
+	border: 1px solid gray;
+	color: black;
+	text-shadow: 0 0 1px #b3b3b3;
+	background: white;
+	-webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    border-radius: 5px;
+}
+
+td.formularz {
+	float: right;
+}
+
+
+p.blad {
+    background: #f88;
+    border: 1px solid #c00;
+    width: 500px;
+    margin: 5px;
+    color: black;
+    font-weight: bold;
+    padding: 2px;
+}
+.to{
+	position: absolute;
+	top: -2px;
+	left: 220px;
+	
+}
+.to1{
+	position: absolute;    
+	bottom: 0px;
+	left: 220px;
+}
+#menu li 
+{
+	list-style: none;
+	position: absolute;
+
+}
+#menu {height: 30px;}
+#menu ul {visibility: hidden; }
+#menu li { padding-right: 1px; position: relative;}
+#menu li li {float: none; padding-top: 1px; width: 360px;}
+#menu li:hover ul {visibility: visible;}
+#menu a, #menu li:hover li a {display: block; font: 12px/30px verdana, sans-serif; text-decoration: none; padding: 0 10px; color: #fff; background-color: #666;}
+#menu li li a {width: 300px;}
+#menu li:hover a, #menu li:hover li:hover a {background-color: #DC143C;}
