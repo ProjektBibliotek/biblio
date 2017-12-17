@@ -42,21 +42,19 @@ echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
 	$zapytanie = "select * from ksiazka_gatunek";
 	$wykonaj = mysqli_query($link, $zapytanie);
 	while($wiersz=mysqli_fetch_assoc($wykonaj)) {
+	while($wiersz=mysqli_fetch_assoc($wykonaj)) {
 	echo " <tr>
-	<td>".$wiersz['id_ksiazki']."</td>
-	<td>".$wiersz['tytul']."</td>
+	<td>".$wiersz['id_uzytkownika']."</td>
 	<td>".$wiersz['imie']."</td>
 	<td>".$wiersz['nazwisko']."</td>
-	<td>".$wiersz['wydawnictwo']."</td>
-	<td>".$wiersz['rok']."</td>
-	<td>".$wiersz['gatunek']."</td>";
+	<td>".$wiersz['adres']."</td>";
 	}
 	echo '</table>';
 ?></center></div>
 <div>
 <?php
 echo'
-<form action="dodaj_ksiazke.php" method = "POST">
+<form action="usun_u.php" method = "POST">
 <table width="250" align="center">
 <tr>
 <td align="right">ID:</td>
@@ -92,7 +90,7 @@ echo'
 ';
 
 if (isset($_POST['popraw'])){
-$zapytanie = "UPDATE ksiazki set tytul=".$_POST['nowy_tytul'].", imie=".$_POST['nowy_autor'].", nazwisko=".$_POST['nowy_naz'].", wydawnictwo=".$_POST['nowy_wyd'].", rok=".$_POST['nowy_rok'].", gatunek=".$_POST['nowy_gatunek']." where id_ksiazki=".$_POST['id']." ";
+$zapytanie = "UPDATE uzytkownik set tytul=".$_POST['nowy_tytul'].", imie=".$_POST['nowy_autor'].", nazwisko=".$_POST['nowy_naz'].", wydawnictwo=".$_POST['nowy_wyd'].", rok=".$_POST['nowy_rok'].", gatunek=".$_POST['nowy_gatunek']." where id_ksiazki=".$_POST['id']." ";
 $wykonaj = mysqli_query($link, $zapytanie);
 }
 ?>
