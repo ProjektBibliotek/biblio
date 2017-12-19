@@ -1,69 +1,3 @@
-<<<<<<< HEAD
-<?php
-ob_start();
-session_start();
-if(!file_exists("polacz_mnie.php")){
-exit;
-} else {
-include("polacz_mnie.php");
-}
-?>
-
-<HTML><html>
-<head>
-<meta charset="utf-8">
-<title>Aplikacja COMFORT</title>
-<link rel="stylesheet" href="biblio.css">
-</head>
-<body bgcolor="b3b3b3">
-<div align="right" style="font-size: 16px">Jesteś zalogowany jako:<b><?php echo $_SESSION['imie']; ?></b></div>
-<div align="right"><a href="wyloguj.php" margin="right 0px">Wyloguj</a></div>
-
-<div id="footer"></div> 
-<div class="container">
-  
-  <h2>ZARZADZAJ BIBLIOTEKĄ</h2>
-<div class="pudelko">
-<ul id="menu">
-	<li><a href="lista_u.php">POWRÓT</a></li>
-
-</ul>
-</div>
-  
-  <div>
-<center>
-<?php
-echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
-	echo '<th>ID</th><th>Imie</th><th>Nazwisko</th><th>Adres</th><th>Login</th><th>Hasło(md5)</th><th>Wybierz</th>';
-	$zapytanie = "select * from czytelnicy";
-	$wykonaj = mysqli_query($link, $zapytanie);
-	while($wiersz=mysqli_fetch_assoc($wykonaj)) {
-	echo " <tr>
-	<th>".$wiersz['id_czytelnika']."</th>
-	<td>".$wiersz['imie']."</td>
-	<td>".$wiersz['nazwisko']."</td>
-	<td>".$wiersz['adres']."</td>
-	<td>".$wiersz['login']."</td>
-	<td>".$wiersz['haslo'].'</td>
-	<th><a href="?id_usun='.$wiersz['id_czytelnika'].'"><button>Usuń</button></a></th>';
-	}
-	echo '</table>';
-?></center></div>
-<div>
-<?php
-if (isset($_GET['id_usun'])){
-$zapytanie = "Delete from czytelnicy where id_czytelnika='".$_GET['id_usun']."';";
-$wykonaj = mysqli_query($link, $zapytanie);
-header ('Location:usun_u.php');
-}
-?>
-
-</div>
-
-</div>
-<header>
-</body>
-=======
 <?php
 ob_start();
 session_start();
@@ -102,12 +36,11 @@ include("polacz_mnie.php");
   <div>
 <center>
 <?php
-//nie gotowy skrypt
+//prawie gotowy skrypt
 echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
 	echo "<td>ID</td><td>Tytuł</td><td>Imię autora</td><td>Nazwisko autora</td><td>Wydawnictwo</td><td>Rok wydania</td><td>Gatunek</td>";
-	$zapytanie = "select * from ksiazka_gatunek";
+	$zapytanie = "select * from uzytkownicy";
 	$wykonaj = mysqli_query($link, $zapytanie);
-	while($wiersz=mysqli_fetch_assoc($wykonaj)) {
 	while($wiersz=mysqli_fetch_assoc($wykonaj)) {
 	echo " <tr>
 	<td>".$wiersz['id_uzytkownika']."</td>
@@ -120,7 +53,7 @@ echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
 <div>
 <?php
 echo'
-<form action="usun_u.php" method = "POST">
+<form action="lista_u.php" method = "POST">
 <table width="250" align="center">
 <tr>
 <td align="right">ID:</td>
@@ -156,7 +89,7 @@ echo'
 ';
 
 if (isset($_POST['popraw'])){
-$zapytanie = "UPDATE uzytkownik set tytul=".$_POST['nowy_tytul'].", imie=".$_POST['nowy_autor'].", nazwisko=".$_POST['nowy_naz'].", wydawnictwo=".$_POST['nowy_wyd'].", rok=".$_POST['nowy_rok'].", gatunek=".$_POST['nowy_gatunek']." where id_ksiazki=".$_POST['id']." ";
+$zapytanie = "";
 $wykonaj = mysqli_query($link, $zapytanie);
 }
 ?>
@@ -166,5 +99,4 @@ $wykonaj = mysqli_query($link, $zapytanie);
 </div>
 <header>
 </body>
->>>>>>> ed05e09f822b4ba73f74001a1b72c938ab00a2a0
 </html>
