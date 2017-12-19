@@ -504,15 +504,40 @@ Wyznaczony cel sprintu nie został w pełni osiągnięty oraz nie wszystkie zapl
 
 \paragraph{Tytuł zadania.}  Utworzenie podstrony modyfikującej, dodającej oraz usuwającej użytkowników zawartych w bazie danych.
 \subparagraph{Wykonawca.} Patrycja Pieniążek 
-\subparagraph{Realizacja.} <<Sprawozdanie z realizacji zadania (w tym ocena zgodności z estymatą).
+\subparagraph{Realizacja.} Podstrony zostały utworzone z wykorzystaniem języka HTML/CSS, wykonane zgodnie z estymatą. Brak napotkanych problemów. Kod programu:
+\begin{verbatim}
 
+ <h2>ZARZADZAJ BIBLIOTEKĄ</h2>
+<div class="pudelko">
+<ul id="menu">
+	<li><a href="listaksiazek.php">LISTA UŻYTKOWNIKÓW</a></li>
+	<li><a href="dodaj_ksiazke.php">DODAJ UŻYTKOWNIKA</a></li>
+	<li><a href="usun_ksiazke.php">USUŃ UŻYTKOWNIKA</a></li>
+	<li><a href="popraw_ksiazke.php">POPRAW DANE UŻYTKOWNIKA</a></li>
+	<li><a href="index.php">POWRÓT</a></li>
 
-
+</ul>
+</div>
+\end{verbatim}>>.
 \paragraph{Tytuł zadania.}  Utworzenie skryptów PHP: Modyfikacja, dodawanie i usuwanie użytkowników..
 \subparagraph{Wykonawca.} Łukasz Wojtas
-\subparagraph{Realizacja.} <<Sprawozdanie z realizacji zadania (w tym ocena zgodności z estymatą).
+\subparagraph{Realizacja.} Stworzenie skryptów w języku PHP, przypisanie kodu do istniejącej bazy danych. Zadanie zostało wykonane zgodnie z ustaloną estymatą, sporadyczne błędy składni, problemy zostały rozwiązane. Kod programu:
 
+\begin{verbatim}
 
+<?php
+echo'
+<form action="lista_u.php" method = "POST">
+<table width="250" align="center">
+<tr>
+<td align="right">ID:</td>
+<td align="right"><input type="text" name="id"></td>
+</tr><tr>
+<td align="right">Tytul:</td>
+<td align="right"><input type="text" name="nowy_tytul"></td>
+</tr><tr>
+
+\end{verbatim}>>.
 
 \paragraph{Tytuł zadania.} Poprawienie funkcjonalności opcji modyfikacji danych książki.
 \subparagraph{Wykonawca.} Karolina Pasiut
@@ -528,8 +553,20 @@ Wyznaczony cel sprintu nie został w pełni osiągnięty oraz nie wszystkie zapl
 
 \paragraph{Tytuł zadania.}  Rozbudowa bazy danych na potrzeby obsługi kolejnych funkcji aplikacji.
 \subparagraph{Wykonawca.} Grzegorz Wygoda
-\subparagraph{Realizacja.} <<Sprawozdanie z realizacji zadania (w tym ocena zgodności z estymatą).
+\subparagraph{Realizacja.} Poprawienie błędów oraz rozbudowanie bazy danych o kolejne funkcje dla obsługi dodanych podstron oraz skryptów, zadanie zostało zrealizowane w wyznaczonej estymacie. Problemy zgodności, drobne błędy w składni. Kod programu:
 
+\begin{verbatim}
+
+CREATE TABLE wypozyczenia (
+id_wypozyczenia INT NOT NULL auto_increment,
+id_czytelnika VARCHAR(30) NOT NULL,
+id_ksiazki VARCHAR(30) NOT NULL,
+data_wypozyczenia DATE NOT NULL,
+data_zwrotu DATE NOT NULL,
+stan_wypozyczenia enum('0','1') NOT NULL DEFAULT '0',
+PRIMARY KEY(id_wypozyczenia),
+
+\end{verbatim}>>.
 
 
 \paragraph{Tytuł zadania.} <<Tytuł>>.
