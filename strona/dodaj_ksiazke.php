@@ -38,12 +38,12 @@ include("polacz_mnie.php");
 <center>
 <?php
 echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
-	echo "<td>ID</td><td>Tytuł</td><td>Imię autora</td><td>Nazwisko autora</td><td>Wydawnictwo</td><td>Rok wydania</td><td>Gatunek</td>";
+	echo "<th>ID</th><th>Tytuł</th><th>Imię autora</th><th>Nazwisko autora</th><th>Wydawnictwo</th><th>Rok wydania</th><th>Gatunek</th>";
 	$zapytanie = "select * from ksiazka_gatunek";
 	$wykonaj = mysqli_query($link, $zapytanie);
 	while($wiersz=mysqli_fetch_assoc($wykonaj)) {
 	echo " <tr>
-	<td>".$wiersz['id_ksiazki']."</td>
+	<th>".$wiersz['id_ksiazki']."</th>
 	<td>".$wiersz['tytul']."</td>
 	<td>".$wiersz['imie']."</td>
 	<td>".$wiersz['nazwisko']."</td>
@@ -57,7 +57,7 @@ echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
 <?php
 echo'
 <form action="dodaj_ksiazke.php" method = "POST">
-<table width="250" align="center">
+<table width="300" align="center">
 <tr>
 <td align="right">ID:</td>
 <td align="right"><input type="text" name="id"></td>
@@ -78,8 +78,13 @@ echo'
 <td align="right"><input type="text" name="nowy_rok"></td>
 </tr><tr>
 <td align="right">Gatunek:</td>
-<td align="right"><input type="text" name="nowy_gatunek"></td>
-</tr>
+<td align="left"><select id="g" name="nowy_gatunek">';
+$plusik="SELECT * FROM gatunek";
+$wykonaj_plusik=mysqli_query($link,$plusik);
+while($wiersz=mysqli_fetch_assoc($wykonaj_plusik)) { 
+echo '<option value="' . $wiersz["id_gatunku"] . '">' . $wiersz["nazwa"] . '</option>';
+}
+echo '</td></tr>
 <tr>
 <font size="16">
 <td align="right" colspan="2"><input type="submit" name="dodaj" style="font-size: 18px" value="Dodaj"></td>
@@ -94,6 +99,7 @@ echo'
 if (isset($_POST['dodaj'])){
 $zapytanie = "insert into ksiazki values('".$_POST['id']."','".$_POST['nowy_tytul']."','".$_POST['nowy_autor']."','".$_POST['nowy_naz']."','".$_POST['nowy_wyd']."','".$_POST['nowy_rok']."','".$_POST['nowy_gatunek']."')";
 $wykonaj = mysqli_query($link, $zapytanie);
+header('Location: dodaj_ksiazke.php');
 }
 ?>
 

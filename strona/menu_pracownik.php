@@ -32,8 +32,9 @@ if ($_SESSION['kto'] !== 'pracownik')
 	</li>
 	<li><a href=""><b>CZYTELNICY</b></a>
 		<ul class="to">
-			<li><a href="edit_user.php">ZMIEŃ DANE/ USUŃ KONTO CZYTELNIKA</a></li>
-			<li><a href="create_user.php">UTWÓRZ NOWE KONTO CZYTELNIKA</a></li>
+			<li><a href="lista_u.php">POKAŻ KONTA CZYTELNIKÓW</a></li>
+			<li><a href="dodaj_u.php">UTWÓRZ NOWE KONTO CZYTELNIKA</a></li>
+			<li><a href="popraw_u.php">USUŃ/POPRAW KONTA CZYTELNIKÓW</a></li>
 		</ul>
 	</li>
 

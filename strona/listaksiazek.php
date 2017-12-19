@@ -36,12 +36,12 @@ include("polacz_mnie.php");
 <center>
 <?php
 echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
-	echo "<td>ID</td><td>Tytuł</td><td>Imię autora</td><td>Nazwisko autora</td><td>Wydawnictwo</td><td>Rok wydania</td><td>Gatunek</td>";
+	echo "<th>ID</th><th>Tytuł</th><th>Imię autora</th><th>Nazwisko autora</th><th>Wydawnictwo</th><th>Rok wydania</th><th>Gatunek</th>";
 	$zapytanie = "select * from ksiazka_gatunek";
 	$wykonaj = mysqli_query($link, $zapytanie);
 	while($wiersz=mysqli_fetch_assoc($wykonaj)) {
 	echo " <tr>
-	<td>".$wiersz['id_ksiazki']."</td>
+	<th>".$wiersz['id_ksiazki']."</th>
 	<td>".$wiersz['tytul']."</td>
 	<td>".$wiersz['imie']."</td>
 	<td>".$wiersz['nazwisko']."</td>

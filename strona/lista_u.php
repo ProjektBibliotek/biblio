@@ -24,10 +24,10 @@ include("polacz_mnie.php");
   <h2>ZARZADZAJ BIBLIOTEKĄ</h2>
 <div class="pudelko">
 <ul id="menu">
-	<li><a href="listaksiazek.php">LISTA UŻYTKOWNIKÓW</a></li>
-	<li><a href="dodaj_ksiazke.php">DODAJ UŻYTKOWNIKA</a></li>
-	<li><a href="usun_ksiazke.php">USUŃ UŻYTKOWNIKA</a></li>
-	<li><a href="popraw_ksiazke.php">POPRAW DANE UŻYTKOWNIKA</a></li>
+	<li><a href="lista_u.php">LISTA UŻYTKOWNIKÓW</a></li>
+	<li><a href="dodaj_u.php">DODAJ UŻYTKOWNIKA</a></li>
+	<li><a href="usun_u.php">USUŃ UŻYTKOWNIKA</a></li>
+	<li><a href="popraw_u.php">POPRAW DANE UŻYTKOWNIKA</a></li>
 	<li><a href="index.php">POWRÓT</a></li>
 
 </ul>
@@ -36,68 +36,22 @@ include("polacz_mnie.php");
   <div>
 <center>
 <?php
-//nie gotowy skrypt
 echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
-	echo "<td>ID</td><td>Tytuł</td><td>Imię autora</td><td>Nazwisko autora</td><td>Wydawnictwo</td><td>Rok wydania</td><td>Gatunek</td>";
-	$zapytanie = "select * from uzytkownicy";
+	echo '<th>ID</th><th>Imie</th><th>Nazwisko</th><th>Adres</th><th>Login</th><th>Hasło(md5)</th>';
+	$zapytanie = "select * from czytelnicy";
 	$wykonaj = mysqli_query($link, $zapytanie);
 	while($wiersz=mysqli_fetch_assoc($wykonaj)) {
 	echo " <tr>
-	<td>".$wiersz['id_ksiazki']."</td>
-	<td>".$wiersz['tytul']."</td>
+	<th>".$wiersz['id_czytelnika']."</th>
 	<td>".$wiersz['imie']."</td>
 	<td>".$wiersz['nazwisko']."</td>
-	<td>".$wiersz['wydawnictwo']."</td>
-	<td>".$wiersz['rok']."</td>
-	<td>".$wiersz['gatunek']."</td>";
+	<td>".$wiersz['adres']."</td>
+	<td>".$wiersz['login']."</td>
+	<td>".$wiersz['haslo'].'</td>';
 	}
 	echo '</table>';
 ?></center></div>
-<div>
-<?php
-echo'
-<form action="dodaj_ksiazke.php" method = "POST">
-<table width="250" align="center">
-<tr>
-<td align="right">ID:</td>
-<td align="right"><input type="text" name="id"></td>
-</tr><tr>
-<td align="right">Tytul:</td>
-<td align="right"><input type="text" name="nowy_tytul"></td>
-</tr><tr>
-<td align="right">Imie autora:</td>
-<td align="right"><input type="text" name="nowy_autor"></td>
-</tr><tr>
-<td align="right">Nazwisko autora:</td>
-<td align="right"><input type="text" name="nowy_naz"></td>
-</tr><tr>
-<td align="right">Wydawnictwo:</td>
-<td align="right"><input type="text" name="nowy_wyd"></td>
-</tr><tr>
-<td align="right">Rok:</td>
-<td align="right"><input type="text" name="nowy_rok"></td>
-</tr><tr>
-<td align="right">Gatunek:</td>
-<td align="right"><input type="text" name="nowy_gatunek"></td>
-</tr>
-<tr>
-<font size="16">
-<td align="right" colspan="2"><input type="submit" name="popraw" style="font-size: 18px" value="Popraw"></td>
-</font>
-</tr>
-</table>
-</form>
-<br>
 
-';
-
-if (isset($_POST['popraw'])){
-$zapytanie = "";
-$wykonaj = mysqli_query($link, $zapytanie);
-}
-?>
-
-</div>
 
 </div>
 <header>
