@@ -542,6 +542,15 @@ echo'
 \paragraph{Tytu³ zadania.} Poprawienie funkcjonalnoœci opcji modyfikacji danych ksi¹¿ki.
 \subparagraph{Wykonawca.} Karolina Pasiut
 \subparagraph{Realizacja.} Poprawa sk³adni skryptów w jêzyku php oraz rozbudowanie ich funkcji. Sporadyczne b³êdy zwi¹zane ze sk³adni¹. Zadanie zosta³o wykonane zgodnie z ustalon¹ estymat¹.
+Kod programu:
+\begin{verbatim}
+<?php
+echo '<table border="1" cellspacing="0" cellpadding="0" margin-top="20px">';
+	echo "<th>ID</th><th>Tytu³</th><th>Imiê autora</th><th>Nazwisko autora</th><th>Wydawnictwo</th><th>Rok wydania</th><th>Gatunek</th>";
+	$zapytanie = "select * from ksiazka_gatunek";
+	$wykonaj = mysqli_query($link, $zapytanie);
+	while($wiersz=mysqli_fetch_assoc($wykonaj)) ...
+\end{verbatim}
 
 
 \paragraph{Tytu³ zadania.} Dodanie funkcjonalnoœci obs³ugi b³êdów przy wprowadzaniu informacji do bazy danych.
@@ -562,7 +571,7 @@ id_ksiazki VARCHAR(30) NOT NULL,
 data_wypozyczenia DATE NOT NULL,
 data_zwrotu DATE NOT NULL,
 stan_wypozyczenia enum('0','1') NOT NULL DEFAULT '0',
-PRIMARY KEY(id_wypozyczenia),
+PRIMARY KEY(id_wypozyczenia), ...
 
 \end{verbatim}>>.
 
