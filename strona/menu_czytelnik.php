@@ -16,9 +16,15 @@ if ($_SESSION['kto'] !== 'czytelnik'){
 <div align="right"><a href="wyloguj.php" margin="right 0px">Wyloguj</a></div>
 <div id="footer"></div> 
 <div class="container">
-  
+   <h2>ZARZADZAJ SWOIM KONTEM</h2>
+<div class="pudelko">
+<ul id="menu">
+	<li><a href="zarezerwujksiazke.php">ZAREZERWUJ KSIĄŻKĘ</a></li>
+	<li><a href="wypozyczenia_u.php">MOJE WYPOŻYCZENIA</a></li>
+</ul>
+</div> 
 
-<header>
-Menu czytelnika
+
+
 </body>
 </html>
