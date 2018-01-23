@@ -644,10 +644,27 @@ Wyznaczony cel sprintu zosta³ w pe³ni osi¹gniêty, oraz wszystkie planowane zadan
 \paragraph{Tytu³ zadania.}Utworzenie podstrony pozwalaj¹cej na zarezerwowanie ksi¹¿ek.
 \subparagraph{Wykonawca.}Mateusz Zygmunt.
 \subparagraph{Realizacja.}Zosta³a stworzona kolejna podstrona, posiadaj¹ca listê ksi¹¿ek, oraz przyciski pozwalaj¹ce na zarezerwowanie.
+\begin{verbatim}
+
+<title>REZERWACJA</title>
+<link rel="stylesheet" href="biblio.css">
+</head>
+<body bgcolor="b3b3b3">
+
+<div id="footer"></div> 
+\end{verbatim}
 
 \paragraph{Tytu³ zadania.}Utworzenie skryptu pozwalaj¹cego na dzia³anie rezerwacji ksi¹¿ek
 \subparagraph{Wykonawca.}£ukasz Wojtas.
 \subparagraph{Realizacja.}Zosta³ utworzony skrypt w jêzyku PHP pozwalaj¹cy na  zarezerwowanie wybranych ksi¹¿ek z bazy danych.
+Kod programu:
+\begin{verbatim}
+
+if (isset($_GET['id_rezer'])){
+$zapytanie = "INSERT INTO rezerwacje VALUES ('".$_GET['id_rezer']."','".$_SESSION['id']."')";
+$wykonaj = mysqli_query($link, $zapytanie);
+header('Location: wypozyczenia_u.php');
+\end{verbatim}
 
 \subsection{Sprint Review/Demo}
 Cel sprintu nie zosta³ w pe³ni osi¹gniêty oraz nie wszystkie zadania zosta³y wykonane. B³êdy w sk³adni jêzyka PHP nie pozwala³y na dok³adne dzia³anie skryptu. 
